@@ -1,0 +1,60 @@
+header{
+	color: #333;
+	background-color: #fff;
+	padding: 35px;
+	background-repeat: no-repeat;
+
+
+
+}
+
+
+
+
+body{
+    background: url("images/sary004.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar{
+    border-radius: 0;
+}
+.navbar-brand{
+    font-family: 'Satisfy', cursive;
+}
+
+.image{
+	max-height: 250px;
+	max-width: 210px;
+	min-height: 250px;
+	min-width: 200px;
+}
+
+div.col-sm-3.col-lg-2{
+	width: 245px;
+	padding: 5px;
+	margin: 0px;
+}
+
+
+.thumbnail{
+	width: 210px;
+	background-color: #333;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 4px;
+
+}
+
+
+/* ------ detail.html ---- */
+
+.audio-player {
+	padding: 0;
+	margin: 0;
+}
+
+
+
+
+

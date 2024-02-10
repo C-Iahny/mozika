@@ -1,0 +1,71 @@
+{% extends 'music/base.html' %}
+{% block title %}{{ album }}{% endblock %}
+{% load static %}
+{% static 'music/detail.css' %}
+
+{% block body %}
+<link rel="stylesheet" type="text/css" href="{% static 'music/detail.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'music/audio.css' %}">
+
+<style type="text/css">
+	
+.container {
+	background-color: #333;
+	color: #ffffff;
+}
+
+.playerContainer {
+	border: 1px solid;
+	border-color: #fff;
+}
+
+
+</style>
+
+{% for k in song %}
+
+    <div class="container">
+        <div class="playContainer">
+            <div class="albumArt">
+                <i class="fa fa-music"></i>
+            </div>
+
+            <div class="info">
+                <div class="audioName">
+                    {{ k.song_title }}
+                </div>
+                <div class="seekBar">
+                    <span class="inner"></span>
+                </div>
+                <div class="timing">
+                    <span class="start">0.00</span>
+                    <span class="end">0.00</span>
+                </div>
+                
+            </div>
+
+            <div class="volumeContriol">
+                <div class="wrapper">
+                    <i class="fa fa-volume-up"></i>
+                    <span class="outer"></span>
+                    <span class="inner"></span>
+                </div>
+            </div>
+
+            <button class="btn play">
+                <i class="fa fa-play"></i>
+                <i class="fa fa-pause"></i>
+            </button>
+
+            <audio-player src="{{ song.audio_file.url }}"></audio-player>
+
+            
+        </div>
+        
+    </div>
+
+{% endfor %}
+
+
+
+{% endblock body %}

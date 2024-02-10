@@ -1,0 +1,149 @@
+{% extends 'music/base.html' %}
+
+
+{% block body %}
+
+<center>
+	{% if searched %}
+	<h1>You're searching for: {{ searched }}</h1>
+
+
+<!-------------- DETAIL DE LA RECHERCHE PAR NOM D'ARTIST ------------>
+		{% for artist in artists %}
+		        <div class="col-sm-4 col-md-3">
+		            <div class="panel panel-default">
+		                <div class="panel-body">
+		                    <a href="{% url 'music:detail' artist.id %}">
+		                        {% if artist.album_logo %}
+		                            <img src="{{ artist.album_logo.url }}" class="img-responsive">
+		                    </a>
+
+								{% elif song %}
+		                    <audio id='audio-player' controls>
+		                        <source src="{{ song.audio_file.url }}" type="audio/mp3">
+		                    </audio>
+								{% endif %}
+			                    <h1>{{ artist.album_title }} <small>{{ artist.genre }}</small></h1>
+			                    <h2>{{ artist.artist }}</h2>
+		                </div>
+		            </div>
+        		</div>
+			
+		{% endfor %}
+
+<!--------------- DETAIL DE LA RECHERCHE PAR GENRE D'ALBUM ----------->
+		{% for k in genre %}
+		        <div class="col-sm-4 col-md-3">
+		            <div class="panel panel-default">
+		                <div class="panel-body">
+		                    <a href="{% url 'music:detail' k.id %}">
+		                        {% if k.album_logo %}
+		                            <img src="{{ k.album_logo.url }}" class="img-responsive">
+		                    </a>
+
+								{% elif song %}
+		                    <audio id='audio-player' controls>
+		                        <source src="{{ song.audio_file.url }}" type="audio/mp3">
+		                    </audio>
+								{% endif %}
+			                    <h1>{{ k.album_title }} <small>{{ k.genre }}</small></h1>
+			                    <h2>{{ k.artist }}</h2>
+		                </div>
+		            </div>
+        		</div>			{% endfor %}
+
+
+
+<!---------------- DETAIL DE LA RECHERCHE PAR TITRE DE CHANSON ----------->
+
+		{% for song in songs %}
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Action</th>
+                            <th>Favorite</th>
+                            <th>Album</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+
+
+                                <td>{{ song.song_title }}</td>
+                                <a target="#audio-player" href="{% url 'music:lecteur' song.id %}">
+                                <td>
+                                    <div class="audio-player">
+                                    
+                                        <button type="button" class="btn btn-success btn-xs">
+
+                                            <audio class='audio-player' controls preload="metadata">
+                                                <source src="{{ song.audio_file.url }}" type="">
+                                            <span class="glyphicon glyphicon-play"></span>&nbsp; Play
+                                            </audio>
+
+                                        </button>
+                                    
+                                    </div>
+                                </td>
+                                </a>
+
+                                <td>
+                                    <a href="{% url 'music:favorite' song.id %}" class="btn-favorite"><span class="glyphicon glyphicon-star {% if song.is_favorite %}active{% endif %}"></span></a>
+                                </td>
+                                    <td>
+                                        <a href="{% url 'music:detail' song.album.id %}">
+                                            <img src="{{ song.album.album_logo.url }}" class="img-responsive" style="width: 50px; float: left; margin-right: 10px;" />
+                                        </a>
+                                        <a href="{% url 'music:detail' song.album.id %}">{{ song.album.album_title }}</a>
+                                    </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+<!-------------- DETAIL DE LA RECHERCHE PAR NOM D'ALBUM ----------->
+
+		{% for album in album_title %}
+		        <div class="col-sm-4 col-md-3">
+		            <div class="panel panel-default">
+		                <div class="panel-body">
+		                    <a href="{% url 'music:detail' album.id %}">
+		                        {% if album.album_logo %}
+		                            <img src="{{ album.album_logo.url }}" class="img-responsive">
+		                    </a>
+
+								{% elif song %}
+		                    <audio id='audio-player' controls>
+		                        <source src="{{ song.audio_file.url }}" type="audio/mp3">
+		                    </audio>
+								{% endif %}
+			                    <h1>{{ album.album_title }} <small>{{ album.genre }}</small></h1>
+			                    <h2>{{ album.artist }}</h2>
+		                </div>
+		            </div>
+        		</div>		
+        {% endfor %}
+
+
+<!----------- SI L'UTILISATEUR N'A RIEN TAPER ----->
+	{% else %}
+	<h1>You forgot to search for a venue...</h1>
+	{% endif %}
+</center>
+
+{% endblock body %}
+

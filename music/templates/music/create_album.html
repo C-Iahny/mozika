@@ -1,0 +1,53 @@
+{% extends 'music/base.html' %}
+{% block title %}Add a New Album{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Add a New Album</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'music/form-template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Vazimba</h3>
+                    <p>App ahafahanao mitahiry ireo hira izay tianao na aiza na aiza misy anao.</p>
+                    <h3>@ fomba ahoana no ampidirana hira?</h3>
+                    <p>Itsy ampita: mamorona Album aloha dia aveo enao afaka mampiditra hira ao anaty Album.<br>
+                        Hovay: (<b>wav</b> na <b>mp3</b> na koa <b>ogg</b>) ny extension'ilay fichier.
+                    </p>
+                    <h3>Mba ahatsara ny endriky ny pejy dia afaka arahinao ireo fepetra kely ambany?</h3>
+                    <ul>
+                        <li>Resolution: 512x512</li>
+                        <li>Formats .JPG, .GIF, na .PNG</li>
+                        <li>Tailles: 2MB </li>
+                        <li>Tsara kokoa raha efa-joro ny sarin'ny Album.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
