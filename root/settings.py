@@ -97,7 +97,7 @@ DATABASES = {
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
         'HOST': 'viaduct.proxy.rlwy.net',
-        'POSRT': '44512',
+        'PORT': '44512',
     }
 }
 
