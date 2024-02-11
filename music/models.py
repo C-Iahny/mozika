@@ -1,6 +1,7 @@
 from django.contrib.auth.models import Permission, User
 from django.db import models
 from django.urls import reverse
+import io
 
 class Album(models.Model):
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)

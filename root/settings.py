@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q7d*we-ph-+4v(1xk^7k^_t+2(g-^7%e@be2g4bu%e5+@&_*sg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -90,6 +90,7 @@ DATABASES = {
 DB_NAME = "railway"
 DB_USER = "postgres"
 DB_PASSWORD = "aC*ECEA*4C45BBd3d*fB4BEg-dgE6B1F"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
